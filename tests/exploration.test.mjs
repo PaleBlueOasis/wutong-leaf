@@ -1,0 +1,13 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { chooseRoute, DEFAULT_PREFERENCES, ROUTES, createJourney, finishJourney, nextTask, allowedTasks, amapSearchUrl } from '../lib/exploration.ts';
+import { journeySchema, preferencesSchema } from '../lib/validation.ts';
+test('没有匹配时不放宽时间限制',()=>assert.equal(chooseRoute({...DEFAULT_PREFERENCES,minutes:15}),null));
+test('所有随机分支均满足本次时间',()=>{for(const minutes of [20,30,40,60,70,110,120])for(const n of [0,.2,.6,.999]){const r=chooseRoute({...DEFAULT_PREFERENCES,minutes},undefined,()=>n);assert.ok(r.duration<=minutes);}});
+test('换路线优先使用符合条件的其他路线',()=>{const r=chooseRoute({...DEFAULT_PREFERENCES,minutes:40},'shade',()=>0);assert.notEqual(r.id,'shade');});
+test('观察分支不得跨地点',()=>{for(const id of ['southgate','chengxian','alley','river'])for(const text of ['窗户的直线','绿色的光','叶子'])assert.ok(allowedTasks(id).some(t=>t.id===nextTask(id,text).id));});
+test('提前结束不记作完整完成，保留笔记',()=>{const j=createJourney(ROUTES[0],'notice');j.notes.southgate='看见一片叶子';const done=finishJourney(j,false);assert.equal(done.status,'ended');assert.match(done.cardText,/一片叶子/);assert.equal(done.demo,true);});
+test('长笔记形成卡片时不超过可保存的长度',()=>{const j=createJourney(ROUTES[0],'notice');j.notes.southgate='叶'.repeat(500);assert.ok(finishJourney(j,false).cardText.length<=240);});
+test('地图链接是关键词搜索，不包含未经核验的坐标',()=>{const u=new URL(amapSearchUrl('四牌楼校区南门'));assert.equal(u.hostname,'uri.amap.com');assert.equal(u.searchParams.get('keyword'),'四牌楼校区南门');assert.equal(u.searchParams.has('center'),false);});
+test('长路线后半程与六条收藏能通过保存格式校验',()=>{const route=ROUTES.find(r=>r.id==='lakeshore');const j=createJourney(route,'notice');j.nodeIndex=route.places.length-1;j.notes.xuanwumen='湖面很开阔';const restored=journeySchema.parse(JSON.parse(JSON.stringify(finishJourney(j,true))));assert.equal(restored.nodeIndex,6);assert.equal(restored.notes.xuanwumen,'湖面很开阔');assert.equal(preferencesSchema.parse({...DEFAULT_PREFERENCES,favorites:ROUTES.map(r=>r.id)}).favorites.length,6);});
+test('超出当前路线长度的节点与外来地点记录会被拒绝',()=>{const route=ROUTES[1];const j=createJourney(route,'notice');assert.equal(journeySchema.safeParse({...j,nodeIndex:route.places.length}).success,false);assert.equal(journeySchema.safeParse({...j,notes:{xuanwumen:'不属于此路线'}}).success,false);});

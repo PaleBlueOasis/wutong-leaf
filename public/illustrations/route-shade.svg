@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500" fill="none">
+  <defs>
+    <filter id="paper"><feTurbulence baseFrequency=".7" numOctaves="3" seed="8" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="table" tableValues="0 .065"/></feComponentTransfer><feBlend in="SourceGraphic" mode="multiply"/></filter>
+    <symbol id="crown" viewBox="0 0 200 180"><path d="M19 95C-17 62 7 20 42 28C44-8 97-10 112 18C151-11 192 13 178 50C218 67 201 118 171 123C181 159 128 185 105 155C71 191 24 166 32 134C4 137-9 108 19 95Z" fill="#45694F"/><path d="M36 64C31 33 73 27 88 48C106 15 144 30 140 56C175 49 187 83 163 102C171 133 129 148 111 129C88 158 55 141 60 116C26 122 13 84 36 64Z" fill="#64855E"/><path d="M57 63C73 43 95 64 88 80C110 58 136 74 128 95C142 109 120 129 103 115C86 139 67 118 73 103C44 103 37 80 57 63Z" fill="#90A67D"/></symbol>
+  </defs>
+  <g filter="url(#paper)">
+    <path fill="#E8E8D7" d="M0 0H800V500H0Z"/>
+    <path d="M0 232C138 206 229 220 363 235C522 194 677 190 800 216V500H0Z" fill="#BCC9AB"/>
+    <path d="M349 245L420 245L619 500H171Z" fill="#EEE5CB"/>
+    <path d="M353 250L421 250L597 500H191Z" fill="#F2ECD8"/>
+    <path d="M342 275H441M321 308H466M294 349H498M264 395H535M226 448H578" stroke="#D7D0B9" stroke-width="2"/>
+    <path d="M379 250L341 500M402 250L451 500" stroke="#DAD2BC" stroke-width="1.5"/>
+    <path d="M0 331C93 294 182 327 278 300L196 500H0ZM485 294C591 291 701 280 800 315V500H606Z" fill="#8BA17F"/>
+    <path d="M59 500L80 162L112 158L98 500Z" fill="#68745B"/><path d="M81 295L20 203M91 255L158 163" stroke="#68745B" stroke-width="21" stroke-linecap="round"/>
+    <path d="M207 377L223 146L242 145L232 377Z" fill="#7D8465"/><path d="M231 237L181 176M234 201L276 148" stroke="#7D8465" stroke-width="11" stroke-linecap="round"/>
+    <path d="M292 308L301 188L312 188L308 308Z" fill="#899072"/>
+    <path d="M718 500L692 140L657 138L675 500Z" fill="#67755E"/><path d="M680 289L748 185M672 228L609 162" stroke="#67755E" stroke-width="22" stroke-linecap="round"/>
+    <path d="M552 378L534 159L515 154L528 378Z" fill="#818B6C"/><path d="M526 234L578 172M524 215L476 168" stroke="#818B6C" stroke-width="12" stroke-linecap="round"/>
+    <path d="M465 305L454 191L444 191L452 305Z" fill="#929B7D"/>
+    <use href="#crown" x="220" y="88" width="164" height="148"/>
+    <use href="#crown" x="403" y="92" width="178" height="160"/>
+    <use href="#crown" x="112" y="29" width="243" height="219"/>
+    <use href="#crown" x="445" y="6" width="270" height="243"/>
+    <use href="#crown" x="-112" y="-60" width="365" height="329"/>
+    <use href="#crown" x="601" y="-65" width="337" height="304"/>
+    <use href="#crown" x="189" y="-145" width="319" height="288"/>
+    <use href="#crown" x="394" y="-176" width="299" height="270"/>
+    <g opacity=".26" fill="#698665"><path d="M281 381L409 359L442 373L275 405Z"/><path d="M255 432L458 399L509 413L227 464Z"/><path d="M365 283L414 274L427 282L357 292Z"/></g>
+    <g transform="translate(157 350) skewY(-7)"><path d="M0 0H99V10H0ZM0 15H99V25H0Z" fill="#B9A276"/><path d="M5 30H104V40H5Z" fill="#8A7B5C"/><path d="M13 24V68M91 25V68" stroke="#4E6651" stroke-width="6"/><path d="M8 25V-6M92 25V-6" stroke="#4E6651" stroke-width="4"/></g>
+    <g transform="translate(391 287)"><ellipse cy="24" rx="8" ry="3" fill="#8E9678" opacity=".3"/><path d="M-3 10L-4 24M3 11L6 23" stroke="#5B6D55" stroke-width="3" stroke-linecap="round"/><path d="M-6-3H6L7 13H-7Z" fill="#C39B56"/><circle cy="-9" r="4.5" fill="#56694E"/></g>
+    <g fill="#C0A264"><path d="M316 429L322 419L331 427L326 438Z"/><path d="M466 463L474 451L482 461L477 471Z"/><path d="M405 361L410 354L416 362L411 367Z"/><path d="M243 483L250 470L262 479L255 491Z"/></g>
+    <g stroke="#496B4D" stroke-width="3" stroke-linecap="round"><path d="M21 467L29 428M27 448L12 437M28 441L41 428M763 485L755 444M757 462L774 451M757 459L741 445M123 453L132 423M131 436L145 427"/></g>
+    <path d="M0 491C46 476 78 491 111 481M699 485C730 471 767 479 800 469" stroke="#65855E" stroke-width="14" stroke-linecap="round"/>
+  </g>
+</svg>
